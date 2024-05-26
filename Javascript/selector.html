@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .hs-photo {
+      width: 200px;
+      position: fixed;
+      right: 0;
+      top: 0px;
+      transform: translateY(-100%);
+      transition-duration: 500ms;
+    }
+    .hs-photo.active {
+      transform: translateY(0);
+    }
+  </style>
+  <body>
+    <h1 class="" style="color: red" class="aa bb cc">JS Query Selector</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus
+      maxime aperiam, quasi unde fugiat consequatur deleniti sint ullam eaque
+      quo fugit sit nisi totam veniam laboriosam ab animi, voluptas eum?
+    </p>
+    <a href="https://mms-it.com" id="link1">MMS IT</a>
+    <a href="https://google.com" id="link2">Google</a>
+
+    <img src="./src/img/dessert3.jpg" alt="" width="300" id="dessertImg" />
+    <!-- <img src="./src/img/footer-3.jpg" alt="" /> -->
+    <button onclick="changeImg('./src/img/footer-1.jpg')">Img1</button>
+    <button onclick="changeImg('./src/img/footer-2.jpg')">Img2</button>
+    <button onclick="changeImg('./src/img/footer-3.jpg')">Img3</button>
+    <br><br>
+    <hr>
+    <img class="hs-photo" src="./src/img/footer-1.jpg" width="200" alt="">
+    <button onclick="toggleImg()">toggle</button>
+    <ul class="lists">
+      <li class="a">Apple</li>
+      <li class="b">Orange</li>
+      <li class="b">Mango</li>
+      <li class="a">Banana</li>
+    </ul>
+    <form action="">
+      <input type="text" id="yourName" name="your_name" />
+      <br /><br />
+      <div>
+        <label for="">Gender</label>
+        <div>
+          <label for="male">Male</label>
+          <input type="radio" id="male" name="gender" value="male" />
+        </div>
+
+        <div class="">
+          <label for="female">Female</label>
+          <input type="radio" name="gender" value="female" id="female" />
+        </div>
+      </div>
+    </form>
+    <script src="./js/selector.js"></script>
+  </body>
+</html>

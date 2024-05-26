@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./dist/output.css" />
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 3000px;
+    }
+
+    .price-tag {
+      background-color: #377dff;
+      height: 50px;
+      width: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-right: 50px;
+    }
+
+    .price-tag::before {
+      content: " ";
+      border: 25px solid transparent;
+      border-left-color: #377dff;
+      position: absolute;
+      left: 150px;
+    }
+
+    .price-tag::after {
+      content: " ";
+      width: 14px;
+      height: 14px;
+      background-color: #ffff;
+      border-radius: 12px;
+      position: absolute;
+      top: 18px;
+      left: 143px;
+    }
+    .box {
+      display: flex;
+    }
+
+    .progress-bar {
+      width: 350px;
+      background-color: gray;
+      height: 15px;
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      padding: 5px;
+    }
+
+    .progress-bar .progress {
+      background-color: pink;
+      width: 30%;
+      height: 100%;
+      border-radius: 15px;
+    }
+
+    .progress-circle {
+      width: 70px;
+      height: 70px;
+      border-radius: 35px;
+      background-image: conic-gradient(#377dff 0deg, #377dff 270deg, gray 0deg , gray 360deg );
+      background-color: #377dff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .progress-circle .progress {
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+      background-color: #ffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+
+    .bg-gradient {
+      height: 100px;
+      width: 100px;
+      background-image: conic-gradient( red 0deg, red 0deg, yellow 0deg, yellow 350deg);
+    }
+
+    .ribbon {
+      display: flex;
+      position: relative;
+      width: 160px;
+    }
+    .ribbon .start {
+      border: 20px solid #7ba9ff;
+      border-left-color: transparent;
+      display: inline-block;
+      position: absolute;
+      top: 10px;
+      left: 0;
+
+    }
+    .ribbon .content {
+      background-color: #377dff;
+      width: 100px;
+      text-align: center;
+      color: #ffff;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      left: 30px;
+      z-index: 10;
+    }
+    .ribbon .content::before{
+      border: 5px solid #0a5ef9;;
+      content: " ";
+      position: absolute;
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+      left: 0;
+      bottom: -10px;
+    }
+    .ribbon .content::after {
+      border: 5px solid #0a5ef9;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      content: " ";
+      position: absolute;
+      right: 0;
+      bottom: -10px;
+    }
+    .ribbon .end {
+      border: 20px solid #7ba9ff;
+      border-right-color: transparent;
+      display: inline-block;
+      position: absolute;
+      top: 10px;
+      right: -1px;
+    }
+  </style>
+
+  <body>
+    <div class="box">
+      <h1 class="price-tag">$ 50.99</h1>
+      <h1 class="price-tag">$ 50.99</h1>
+      <h1 class="price-tag">$ 50.99</h1>
+    </div>
+
+    <br /><br /><br />
+
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+    <br /><br />
+    <div class="progress-circle">
+      <div class="progress">75%</div>
+    </div>
+
+    <div class="bg-gradient"></div>
+    <br><br><br><br>
+
+    <div class="ribbon">
+      <div class="start"></div>
+      <div class="content">
+        1st prize
+      </div>
+      <div class="end"></div>
+
+    </div>
+  </body>
+</html>

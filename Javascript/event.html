@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .heading {
+      border: 3px solid black;
+      padding: 20px;
+      margin: 20px;
+      text-align: center;
+    }
+    body {
+      height: 3000px;
+    }
+    .border {
+      border: 1px solid black;
+      padding: 30px;
+    }
+    .box:active,
+    .innerBox:active,
+    .title:active,
+    .para:active {
+      background-color: lightgray;
+    }
+  </style>
+  <body>
+    <!-- <h1 class="heading">My Event Test</h1> -->
+    <div class="box border">
+      <div class="innerBox border">
+        <div class="card border">
+          <h1 class="title border">Event Test</h1>
+          <p class="para border">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione,
+            culpa!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.querySelector(".box").addEventListener("click", () => {
+        console.log("u click box");
+      });
+      document.querySelector(".innerBox").addEventListener("click", () => {
+        console.log("u click inner box");
+      });
+      document.querySelector(".card").addEventListener("click", () => {
+        console.log("u click card");
+      });
+      document.querySelector(".title").addEventListener("click", (event) => {
+        event.stopPropagation();
+        console.log("u click title");
+      });
+      document.querySelector(".para").addEventListener("click", () => {
+        console.log("u click para");
+      });
+    </script>
+  </body>
+</html>
