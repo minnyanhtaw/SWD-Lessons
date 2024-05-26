@@ -104,3 +104,4 @@ textInput.addEventListener("keyup", (event) => {
 });
 
 listGroup.addEventListener("click", listGroupHandler);
+
