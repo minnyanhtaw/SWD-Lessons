@@ -1,4 +1,4 @@
-const app = document.querySelector("#app");
+// const app = document.querySelector("#app");
 
 // const heading = document.createElement("h1");
 // heading.innerText = "To do App";
@@ -33,50 +33,50 @@ const app = document.querySelector("#app");
 
 // app.append(lists);
 
-const tasks = ["sleep well", "eat less", "learn react"];
+// const tasks = ["sleep well", "eat less", "learn react"];
 
-const createHeading = (text) => {
-  const heading = document.createElement("h1");
-  heading.innerText = text;
-  return heading;
-};
+// const createHeading = (text) => {
+//   const heading = document.createElement("h1");
+//   heading.innerText = text;
+//   return heading;
+// };
 
-const createForm = () => {
-  const createForm = document.createElement("form");
-  const textInput = document.createElement("input");
-  const button = document.createElement("button");
-  button.innerText = "Add";
-  createForm.append(textInput);
-  createForm.append(button);
+// const createForm = () => {
+//   const createForm = document.createElement("form");
+//   const textInput = document.createElement("input");
+//   const button = document.createElement("button");
+//   button.innerText = "Add";
+//   createForm.append(textInput);
+//   createForm.append(button);
 
-  return createForm;
-};
+//   return createForm;
+// };
 
-const createListGroup = () => {
-  const lists = document.createElement("ul");
-  lists.setAttribute("id", "listGroup");
-  return lists;
-};
+// const createListGroup = () => {
+//   const lists = document.createElement("ul");
+//   lists.setAttribute("id", "listGroup");
+//   return lists;
+// };
 
-const createList = (text) => {
-  const list = document.createElement("li");
-  list.innerText = text;
-  return list;
-};
+// const createList = (text) => {
+//   const list = document.createElement("li");
+//   list.innerText = text;
+//   return list;
+// };
 
-const renderList = (lists) => {
-  const listGroup = app.querySelector("#listGroup");
-  listGroup.innerHTML = "";
-  lists.forEach((list) => listGroup.append(createList(list)));
-};
+// const renderList = (lists) => {
+//   const listGroup = app.querySelector("#listGroup");
+//   listGroup.innerHTML = "";
+//   lists.forEach((list) => listGroup.append(createList(list)));
+// };
 
-(function () {
-  app.append(createHeading("learn js"));
-  app.append(createForm());
-  app.append(createListGroup());
+// (function () {
+//   app.append(createHeading("learn js"));
+//   app.append(createForm());
+//   app.append(createListGroup());
 
-  renderList(tasks);
 //   renderList(tasks);
-//   renderList(tasks);
+// //   renderList(tasks);
+// //   renderList(tasks);
 
-})();
+// })();
