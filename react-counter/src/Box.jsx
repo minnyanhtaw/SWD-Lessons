@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Box = (props) => {
-  const [hide, setHide] = useState(true);
+  // const [hide, setHide] = useState(true);
 
   const handlerOpen = () => {
     setHide(false);
@@ -12,7 +12,9 @@ const Box = (props) => {
   };
 
   const handlerToggle = () => {
-    setHide(!hide);
+    // setHide(!hide);
+    // console.log("u click box", props.id);
+    props.clickBox(props.id);
   };
 
   return (
@@ -28,7 +30,7 @@ const Box = (props) => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className={`${!hide && "rotate-90"} size-4 duration-200`}
+          className={`${!props.hide && "rotate-90"} size-4 duration-200`}
         >
           <path
             strokeLinecap="round"
@@ -37,22 +39,10 @@ const Box = (props) => {
           />
         </svg>
       </button>
-      {/* <button
-        onClick={handlerOpen}
-        className=" col-span-1 border rounded text-white bg-blue-600  p-2 duration-75 active:scale-95"
-      >
-        Open
-      </button>
-      <button
-        onClick={handlerClose}
-        className=" col-span-1 border rounded text-white bg-red-600  p-2 duration-75 active:scale-95"
-      >
-        Close
-      </button> */}
 
       <div
         className={`${
-          hide && "hidden"
+          props.hide && "hidden"
         } col-span-2 border p-5 bg-zinc-200 rounded `}
       >
         <p>
