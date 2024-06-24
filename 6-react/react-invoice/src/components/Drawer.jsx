@@ -1,6 +1,7 @@
 import React from "react";
 import MainHeading from "./MainHeading";
 import SubHeading from "./SubHeading";
+import CreateProductForm from "./CreateProductForm";
 import { Button } from "flowbite-react";
 import { HiXMark } from "react-icons/hi2";
 
@@ -21,7 +22,7 @@ const Drawer = ({ isDrawerOpen, handleDrawer, products }) => {
         </Button>
       </div>
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 mb-5">
         {products.map(({ name, price, id }) => (
           <div
             key={id}
@@ -32,6 +33,8 @@ const Drawer = ({ isDrawerOpen, handleDrawer, products }) => {
           </div>
         ))}
       </div>
+
+      <CreateProductForm />
     </div>
   );
 };
