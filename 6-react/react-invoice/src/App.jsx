@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CheckOutForm from "./components/CheckOutForm";
 import CheckOutItemList from "./components/CheckOutItemList";
+import Drawer from "./components/Drawer";
 
 const App = () => {
   const [products, setProduct] = useState([
@@ -37,6 +38,12 @@ const App = () => {
     },
   ]);
 
+  const [isDrawerOpen, setDrawerOpen] = useState(true);
+
+  const handleDrawer = () => {
+    setDrawerOpen(!isDrawerOpen);
+  };
+
   return (
     <main className=" flex flex-col min-h-screen">
       <Header>
@@ -54,11 +61,15 @@ const App = () => {
       <Footer>
         <Container>
           <div className=" flex gap-2 items-center justify-end">
-            <Button color="light">Manage Product</Button>
+            <Button onClick={handleDrawer} color="light">
+              Manage Product
+            </Button>
             <Button color="blue">Print</Button>
           </div>
         </Container>
       </Footer>
+
+      <Drawer isDrawerOpen={isDrawerOpen} products={products} handleDrawer={handleDrawer} />
     </main>
   );
 };
