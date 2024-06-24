@@ -1,15 +1,14 @@
 import React from "react";
 import MainHeading from "./MainHeading";
 import SubHeading from "./SubHeading";
-import CreateProductForm from "./CreateProductForm";
 import { Button } from "flowbite-react";
 import { HiXMark } from "react-icons/hi2";
 
 const Drawer = ({ isDrawerOpen, handleDrawer, products }) => {
   return (
     <div
-      className={` fixed shadow-md right-0 top-0 w-[300px] duration-300 p-3 bg-white h-screen ${
-        !isDrawerOpen && "translate-x-full"
+      className={` fixed shadow-md right-0 top-0 w-[300px] duration-300 p-3 bg-white h-screen translate-x-full ${
+        isDrawerOpen && "translate-x-0"
       }`}
     >
       <div className=" flex justify-between items-center">
@@ -22,7 +21,7 @@ const Drawer = ({ isDrawerOpen, handleDrawer, products }) => {
         </Button>
       </div>
 
-      <div className="flex flex-col gap-4 mb-5">
+      <div className="flex flex-col gap-4">
         {products.map(({ name, price, id }) => (
           <div
             key={id}
@@ -33,8 +32,6 @@ const Drawer = ({ isDrawerOpen, handleDrawer, products }) => {
           </div>
         ))}
       </div>
-
-      <CreateProductForm />
     </div>
   );
 };
