@@ -6,6 +6,7 @@ import SubHeading from "./components/SubHeading";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CheckOutForm from "./components/CheckOutForm";
+import CheckOutItemList from "./components/CheckOutItemList";
 
 const App = () => {
   const [products, setProduct] = useState([
@@ -47,6 +48,7 @@ const App = () => {
 
       <Container>
         <CheckOutForm products={products} />
+        <CheckOutItemList />
       </Container>
 
       <Footer>
