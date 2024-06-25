@@ -8,8 +8,8 @@ import { HiXMark } from "react-icons/hi2";
 const Drawer = ({ isDrawerOpen, handleDrawer, products }) => {
   return (
     <div
-      className={` fixed shadow-md right-0 top-0 w-[300px] duration-300 p-3 bg-white h-screen translate-x-full ${
-        isDrawerOpen && "translate-x-0"
+      className={` fixed shadow-md right-0 top-0 w-[300px] duration-300 p-3 bg-white h-screen ${
+        !isDrawerOpen && "translate-x-full"
       }`}
     >
       <div className=" flex justify-between items-center">

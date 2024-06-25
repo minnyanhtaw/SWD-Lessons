@@ -37,11 +37,16 @@ const App = () => {
       price: 300,
     },
   ]);
+  const [items, setItems] = useState([]);
 
-  const [isDrawerOpen, setDrawerOpen] = useState(true);
+  const [isDrawerOpen, setDrawerOpen] = useState(false);
 
   const handleDrawer = () => {
     setDrawerOpen(!isDrawerOpen);
+  };
+
+  const addItem = (newItem) => {
+    setItems([...items, newItem]);
   };
 
   return (
@@ -54,8 +59,8 @@ const App = () => {
       </Header>
 
       <Container>
-        <CheckOutForm products={products} />
-        <CheckOutItemList />
+        <CheckOutForm addItem={addItem} products={products} />
+        <CheckOutItemList items={items} />
       </Container>
 
       <Footer>
@@ -69,7 +74,11 @@ const App = () => {
         </Container>
       </Footer>
 
-      <Drawer isDrawerOpen={isDrawerOpen} products={products} handleDrawer={handleDrawer} />
+      <Drawer
+        isDrawerOpen={isDrawerOpen}
+        products={products}
+        handleDrawer={handleDrawer}
+      />
     </main>
   );
 };
