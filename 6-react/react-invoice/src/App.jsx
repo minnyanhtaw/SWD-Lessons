@@ -49,6 +49,10 @@ const App = () => {
     setItems([...items, newItem]);
   };
 
+  const removeItem = (id) => {
+    setItems(items.filter((item) => item.id !== id));
+  };
+
   return (
     <main className=" flex flex-col min-h-screen">
       <Header>
@@ -60,7 +64,7 @@ const App = () => {
 
       <Container>
         <CheckOutForm addItem={addItem} products={products} />
-        <CheckOutItemList items={items} />
+        <CheckOutItemList removeItem={removeItem} items={items} />
       </Container>
 
       <Footer>
