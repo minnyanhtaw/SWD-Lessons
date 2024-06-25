@@ -4,6 +4,7 @@ import { Button, Table } from "flowbite-react";
 import List from "./List";
 
 const CheckOutItemList = ({ items }) => {
+  const total = items.reduce((pv, cv) => pv + parseInt(cv.cost), 0);
   return (
     <div className="overflow-x-auto">
       <Table>
@@ -31,6 +32,17 @@ const CheckOutItemList = ({ items }) => {
               </Table.Cell>
             </Table.Row>
           )}
+
+          <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+            <Table.Cell
+              colSpan={3}
+              className=" text-center font-bold text-black"
+            >
+              Total
+            </Table.Cell>
+            <Table.Cell className=" text-end">$ {total}</Table.Cell>
+            <Table.Cell></Table.Cell>
+          </Table.Row>
         </Table.Body>
       </Table>
     </div>
