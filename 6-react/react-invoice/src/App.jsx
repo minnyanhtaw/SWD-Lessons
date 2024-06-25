@@ -67,7 +67,6 @@ const App = () => {
   };
 
 
-
   return (
     <main className=" flex flex-col min-h-screen">
       <Header>
