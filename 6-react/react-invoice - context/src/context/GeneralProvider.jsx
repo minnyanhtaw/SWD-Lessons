@@ -10,7 +10,12 @@ const GeneralProvider = ({ children }) => {
   };
 
   return (
-    <GeneralContext.Provider value={{ handleDrawer, openDrawer }}>
+    <GeneralContext.Provider
+      value={{
+        handleDrawer,
+        openDrawer,
+      }}
+    >
       {children}
     </GeneralContext.Provider>
   );

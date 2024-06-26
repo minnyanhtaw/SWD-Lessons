@@ -1,8 +1,11 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import SubHeading from "./SubHeading";
 import { TextInput, Label, Button } from "flowbite-react";
+import { GeneralContext } from "../context/GeneralProvider";
+import { ProductContext } from "../context/ProductProvider";
 
-const CreateProductForm = ({ addProduct }) => {
+const CreateProductForm = () => {
+  const { addProduct } = useContext(ProductContext);
   const formRef = useRef();
 
   const handleForm = (event) => {

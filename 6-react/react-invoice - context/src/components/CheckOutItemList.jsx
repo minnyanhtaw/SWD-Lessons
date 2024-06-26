@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Table } from "flowbite-react";
 
 import List from "./List";
+import { GeneralContext } from "../context/GeneralProvider";
+import ItemProvider, { ItemContext } from "../context/ItemProvider";
 
-const CheckOutItemList = ({ items, removeItem, updateQuantity }) => {
+const CheckOutItemList = () => {
+  const { items, removeItem, updateQuantity } = useContext(ItemContext);
   const total = items.reduce((pv, cv) => pv + parseInt(cv.cost), 0);
   return (
     <div className="overflow-x-auto">
@@ -19,12 +22,7 @@ const CheckOutItemList = ({ items, removeItem, updateQuantity }) => {
         </Table.Head>
         <Table.Body className="divide-y">
           {items.map((item) => (
-            <List
-              updateQuantity={updateQuantity}
-              removeItem={removeItem}
-              key={item.id}
-              item={item}
-            />
+            <List key={item.id} item={item} />
           ))}
 
           {items.length === 0 && (

@@ -1,9 +1,13 @@
 import { Button, Table } from "flowbite-react";
-import React from "react";
+import React, { useContext } from "react";
 import { HiMiniPlus } from "react-icons/hi2";
 import { HiMiniMinus } from "react-icons/hi2";
+import { GeneralContext } from "../context/GeneralProvider";
+import { ItemContext } from "../context/ItemProvider";
 
-const List = ({ item, removeItem, updateQuantity }) => {
+const List = ({ item }) => {
+  const { items, removeItem, updateQuantity } = useContext(ItemContext);
+
   const handleRemoveItem = () => {
     if (confirm("Delete ?")) {
       removeItem(item.id);

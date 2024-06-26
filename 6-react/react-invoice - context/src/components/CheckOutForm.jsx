@@ -1,7 +1,13 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import { Button, Label, Select, TextInput } from "flowbite-react";
+import { GeneralContext } from "../context/GeneralProvider";
+import ProductProvider, { ProductContext } from "../context/ProductProvider";
+import { ItemContext } from "../context/ItemProvider";
 
-const CheckOutForm = ({ products, addItem }) => {
+const CheckOutForm = () => {
+  const { addItem } = useContext(ItemContext);
+  const { products } = useContext(ProductContext);
+
   const selectRef = useRef();
   const quantityRef = useRef();
   const formRef = useRef();

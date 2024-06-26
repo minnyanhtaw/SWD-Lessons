@@ -5,9 +5,12 @@ import CreateProductForm from "./CreateProductForm";
 import { Button } from "flowbite-react";
 import { HiXMark } from "react-icons/hi2";
 import { GeneralContext } from "../context/GeneralProvider";
+import { ProductContext } from "../context/ProductProvider";
 
-const Drawer = ({ products, addProduct }) => {
+const Drawer = () => {
   const { openDrawer, handleDrawer } = useContext(GeneralContext);
+  const { products, addProduct } = useContext(ProductContext);
+
   return (
     <div
       className={` fixed shadow-md right-0 top-0 w-[300px] overflow-y-scroll duration-300 p-3 bg-white h-screen ${
