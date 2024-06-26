@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import MainHeading from "./MainHeading";
 import SubHeading from "./SubHeading";
 import CreateProductForm from "./CreateProductForm";
 import { Button } from "flowbite-react";
 import { HiXMark } from "react-icons/hi2";
+import { GeneralContext } from "../context/GeneralProvider";
 
-const Drawer = ({ isDrawerOpen, handleDrawer, products, addProduct }) => {
+const Drawer = ({ products, addProduct }) => {
+  const { openDrawer, handleDrawer } = useContext(GeneralContext);
   return (
     <div
       className={` fixed shadow-md right-0 top-0 w-[300px] overflow-y-scroll duration-300 p-3 bg-white h-screen ${
-        !isDrawerOpen && "translate-x-full"
+        !openDrawer && "translate-x-full"
       }`}
     >
       <div className=" flex justify-between items-center">

@@ -8,16 +8,43 @@ import Footer from "./components/Footer";
 import CheckOutForm from "./components/CheckOutForm";
 import CheckOutItemList from "./components/CheckOutItemList";
 import Drawer from "./components/Drawer";
+import GeneralProvider from "./context/GeneralProvider";
 
 const App = () => {
+  const [products, setProduct] = useState([
+    {
+      id: 1,
+      name: "Apple",
+      price: 500,
+      stock: 30,
+    },
+    {
+      id: 2,
+      name: "Orange",
+      price: 600,
+      stock: 23,
+    },
+    {
+      id: 3,
+      name: "Mango",
+      price: 400,
+      stock: 10,
+    },
+    {
+      id: 4,
+      name: "Banana",
+      price: 700,
+      stock: 40,
+    },
+    {
+      id: 5,
+      name: "Lemon",
+      price: 300,
+      stock: 48,
+    },
+  ]);
 
   const [items, setItems] = useState([]);
-
-  const [isDrawerOpen, setDrawerOpen] = useState(false);
-
-  const handleDrawer = () => {
-    setDrawerOpen(!isDrawerOpen);
-  };
 
   const addItem = (newItem) => {
     setItems([...items, newItem]);
@@ -45,41 +72,29 @@ const App = () => {
   };
 
   return (
-    <main className=" flex flex-col min-h-screen">
-      <Header>
+    <GeneralProvider>
+      <main className=" flex flex-col min-h-screen">
+        <Header>
+          <Container>
+            <MainHeading>Invoice App</MainHeading>
+            <SubHeading>MMS Solutions</SubHeading>
+          </Container>
+        </Header>
+
         <Container>
-          <MainHeading>Invoice App</MainHeading>
-          <SubHeading>MMS Solutions</SubHeading>
+          <CheckOutForm addItem={addItem} products={products} />
+          <CheckOutItemList
+            updateQuantity={updateQuantity}
+            removeItem={removeItem}
+            items={items}
+          />
         </Container>
-      </Header>
 
-      <Container>
-        <CheckOutForm addItem={addItem} products={products} />
-        <CheckOutItemList
-          updateQuantity={updateQuantity}
-          removeItem={removeItem}
-          items={items}
-        />
-      </Container>
+        <Footer />
 
-      <Footer>
-        <Container>
-          <div className=" flex gap-2 items-center justify-end">
-            <Button onClick={handleDrawer} color="light">
-              Manage Product
-            </Button>
-            <Button color="blue">Print</Button>
-          </div>
-        </Container>
-      </Footer>
-
-      <Drawer
-        addProduct={addProduct}
-        isDrawerOpen={isDrawerOpen}
-        products={products}
-        handleDrawer={handleDrawer}
-      />
-    </main>
+        <Drawer addProduct={addProduct} products={products} />
+      </main>
+    </GeneralProvider>
   );
 };
 
