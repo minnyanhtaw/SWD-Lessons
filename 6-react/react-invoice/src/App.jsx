@@ -53,6 +53,19 @@ const App = () => {
     setItems(items.filter((item) => item.id !== id));
   };
 
+  const updateQuantity = (id, amount) => {
+    setItems(
+      items.map((item) => {
+        if (item.id === id) {
+          const quantity = item.quantity + amount;
+          const cost = quantity * item.product.price;
+          return { ...item, quantity, cost };
+        }
+        return item;
+      })
+    );
+  };
+
   return (
     <main className=" flex flex-col min-h-screen">
       <Header>
@@ -64,7 +77,11 @@ const App = () => {
 
       <Container>
         <CheckOutForm addItem={addItem} products={products} />
-        <CheckOutItemList removeItem={removeItem} items={items} />
+        <CheckOutItemList
+          updateQuantity={updateQuantity}
+          removeItem={removeItem}
+          items={items}
+        />
       </Container>
 
       <Footer>

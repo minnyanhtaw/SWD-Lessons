@@ -3,7 +3,7 @@ import { Button, Table } from "flowbite-react";
 
 import List from "./List";
 
-const CheckOutItemList = ({ items, removeItem }) => {
+const CheckOutItemList = ({ items, removeItem, updateQuantity }) => {
   const total = items.reduce((pv, cv) => pv + parseInt(cv.cost), 0);
   return (
     <div className="overflow-x-auto">
@@ -19,7 +19,12 @@ const CheckOutItemList = ({ items, removeItem }) => {
         </Table.Head>
         <Table.Body className="divide-y">
           {items.map((item) => (
-            <List removeItem={removeItem} key={item.id} item={item} />
+            <List
+              updateQuantity={updateQuantity}
+              removeItem={removeItem}
+              key={item.id}
+              item={item}
+            />
           ))}
 
           {items.length === 0 && (
