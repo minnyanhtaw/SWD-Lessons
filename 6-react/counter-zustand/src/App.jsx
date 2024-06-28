@@ -6,11 +6,11 @@ import CounterProvider from "./context/CounterProvider";
 
 const App = () => {
   return (
-    <CounterProvider>
+    <>
       <Counter />
       <Add />
       <Sub />
-    </CounterProvider>
+    </>
   );
 };
 

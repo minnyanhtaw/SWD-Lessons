@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
-import { CounterContext } from "../context/CounterProvider";
+import useCountStore from "../stores/CountStore";
 
 const Counter = () => {
-  const { count } = useContext(CounterContext);
+  const {count} = useCountStore();
+  
+
   return <h1 className="text-3xl">{count}</h1>;
 };
 

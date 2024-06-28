@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { CounterContext } from "../context/CounterProvider";
+import useCountStore from "../stores/CountStore";
 
 const Sub = () => {
-  const { decrement } = useContext(CounterContext);
+  const { decrement } = useCountStore();
   return (
     <button onClick={decrement} className=" border p-3 bg-blue-700 text-white">
       Sub
