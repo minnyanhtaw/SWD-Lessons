@@ -1,27 +1,15 @@
-import React from "react";
+import CategorySection from "../components/CategorySection";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 
-const App = () => {
-  const title = "Product Categories";
-  const categories = [
-    "Electronics",
-    "Jewelry",
-    "Men's clothing",
-    "Women's clothing",
-  ];
+export const App = () => {
+  
   return (
-    <div className="p-5">
-      <p className="text-3xl font-bold mb-5 text-gray-700">{title}</p>
-      <div className="overflow-x-scroll flex ">
-        {categories.map((category) => (
-          <button
-            key={category}
-            className="border rounded text-nowrap border-black p-2 me-2"
-          >
-            {category}
-          </button>
-        ))}
-      </div>
-    </div>
+    <>
+      <Header />
+      <CategorySection />
+      <Footer />
+    </>
   );
 };
 
