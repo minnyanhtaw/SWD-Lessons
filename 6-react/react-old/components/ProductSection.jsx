@@ -273,9 +273,9 @@ const ProductSection = () => {
   ];
 
   return (
-    <section className="px-5">
+    <section className="px-5 mb-5">
       <p className="text-sm text-zinc-700 mb-3">Available Products</p>
-      <div className="grid grid-cols-2 gap-5 md:grid-cols-3">
+      <div className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4">
         {products.map((product) => (
           <ProductCart key={product.id} product={product} />
         ))}
