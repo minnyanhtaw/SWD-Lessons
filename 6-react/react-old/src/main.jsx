@@ -1,11 +1,6 @@
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/Home";
-import AboutUs from "./pages/AboutUs";
-import ProductCart from "./components/ProductCart";
-import ProductDetail from "./pages/ProductDetail";
+import { RouterProvider } from "react-router-dom";
 import router from "./routes/router";
 
 // const categories = [

@@ -3,25 +3,33 @@ import Home from "../pages/Home";
 import AboutUs from "../pages/AboutUs";
 import ProductCart from "../components/ProductCart";
 import ProductDetail from "../pages/ProductDetail";
+import MainLayout from "../components/MainLayout";
+import MyCart from "../pages/MyCart";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
-  },
-  {
-    path: "about-us",
-    element: <AboutUs />,
-  },
+    element: <MainLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "about-us",
+        element: <AboutUs />,
+      },
 
-  {
-    path: "product-cart",
-    element: <ProductCart />,
-  },
+      {
+        path: "product-cart",
+        element: <MyCart />,
+      },
 
-  {
-    path: "product-detail",
-    element: <ProductDetail />,
+      {
+        path: "product-detail/:productId",
+        element: <ProductDetail />,
+      },
+    ],
   },
 ]);
 
