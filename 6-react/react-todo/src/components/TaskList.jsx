@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import Task from "./Task";
+import { TaskContext } from "../context/TaskProvider";
 
-const TaskList = ({ tasks, deleteTask }) => {
+const TaskList = () => {
+  const { tasks } = useContext(TaskContext);
   return (
     <div>
       <h3 className=" text-zinc-600 font-bold mb-3">
@@ -9,7 +11,7 @@ const TaskList = ({ tasks, deleteTask }) => {
       </h3>
       <div className=" grid grid-cols-1 gap-2">
         {tasks.map((el) => (
-          <Task job={el} key={el} deleteTask={deleteTask} />
+          <Task job={el} key={el.id} />
         ))}
       </div>
     </div>
