@@ -8,14 +8,34 @@ import Breadcrumb from "../components/Breadcrumb";
 // import carts from "../data/carts";
 import useProductStore from "../store/useProductStroe";
 import useCartStore from "../store/useCartStore";
+import toast from "react-hot-toast";
 
 const ProductDetail = () => {
-  const { carts } = useCartStore();
+  const { carts, addCart } = useCartStore();
   const { products } = useProductStore();
   const { productId } = useParams();
   const currentProduct = products.find((product) => {
     return product.id === parseInt(productId);
   });
+
+  const handleAddedCartBtn = (event) => {
+    event.stopPropagation();
+    toast.error("This product is already exited", {
+      position: "bottom-right",
+      duration: 2000,
+    });
+  };
+
+  const handleAddCartBtn = (event) => {
+    event.stopPropagation();
+    const newCart = {
+      id: Date.now(),
+      productId: currentProduct.id,
+      quantity: 1,
+    };
+    addCart(newCart);
+  };
+
   console.log(currentProduct);
   return (
     <Container>
@@ -35,12 +55,18 @@ const ProductDetail = () => {
           <Star rate={currentProduct.rating.rate} />
           <div className="flex justify-between w-full items-center">
             <p>Price : ( $ {currentProduct.price} )</p>
-            {carts.find((cart) => cart.id === currentProduct.id) ? (
-              <button className="border border-black px-4 py-2 bg-black opacity-70 text-white">
+            {carts.find((cart) => cart.productId === currentProduct.id) ? (
+              <button
+                onClick={handleAddedCartBtn}
+                className="border border-black px-4 py-2 bg-black opacity-70 text-white"
+              >
                 Added
               </button>
             ) : (
-              <button className="border border-black px-4 py-2">
+              <button
+                onClick={handleAddCartBtn}
+                className="border border-black px-4 py-2"
+              >
                 Add to Cart
               </button>
             )}

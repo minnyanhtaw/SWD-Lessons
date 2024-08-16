@@ -3,6 +3,7 @@ import React from "react";
 import Cart from "./Cart";
 import useCartStore from "../store/useCartStore";
 import useProductStore from "../store/useProductStroe";
+import emptyCart from "../assets/EmptyCart.svg";
 
 const CartSection = () => {
   const { carts } = useCartStore();
@@ -22,9 +23,15 @@ const CartSection = () => {
   return (
     <section className="flex flex-col justify-between min-h-[500px] ">
       <div className="w-full grid gap-3">
-        {carts.map((cart) => (
-          <Cart key={cart.id} cart={cart} />
-        ))}
+        {carts.length === 0 ? (
+          <img
+            className="w-[200px] block mx-auto"
+            src={emptyCart}
+            alt="empty"
+          />
+        ) : (
+          carts.map((cart) => <Cart key={cart.id} cart={cart} />)
+        )}
       </div>
 
       <div className=" mt-auto border-t-2 border-black py-2">

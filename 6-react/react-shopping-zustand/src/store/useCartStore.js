@@ -13,6 +13,13 @@ const useCartStore = create((set) => ({
       quantity: 4,
     },
   ],
+
+  addCart: (newCart) => {
+    set((state) => ({
+      carts: [...state.carts, newCart],
+    }));
+  },
+
   increaseQuantity: (productId) => {
     set((state) => ({
       carts: state.carts.map((el) =>
@@ -26,6 +33,12 @@ const useCartStore = create((set) => ({
       carts: state.carts.map((el) =>
         el.id === productId ? { ...el, quantity: el.quantity - 1 } : el
       ),
+    }));
+  },
+
+  removeCart: (id) => {
+    set((state) => ({
+      carts: state.carts.filter((el) => el.id !== id),
     }));
   },
 }));
