@@ -1,0 +1,56 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "name": "Read Book",
+      "is_done": false
+    },
+    {
+      "id": 2,
+      "name": "Write Article",
+      "is_done": true
+    },
+    {
+      "name": "Miss Ma Moe",
+      "is_done": true,
+      "id": 3
+    },
+    {
+      "id": 4,
+      "name": "Sleep",
+      "is_done": true
+    }
+  ],
+  "contacts": [
+    {
+      "id": 1,
+      "name": "John",
+      "phone": "1234567890"
+    },
+    {
+      "id": 2,
+      "name": "Jane",
+      "phone": "0987654321"
+    },
+    {
+      "id": 3,
+      "name": "Bob",
+      "phone": "5555555555"
+    },
+    {
+      "id": 4,
+      "name": "Alice",
+      "phone": "1111111111"
+    },
+    {
+      "name": "Ma Ma",
+      "phone": "1234565432",
+      "id": 8
+    },
+    {
+      "name": "Min Nyan Htaw",
+      "phone": "09763543424",
+      "id": 9
+    }
+  ]
+}
