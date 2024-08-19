@@ -14,6 +14,7 @@ const ProductCart = ({
     price,
     image,
     rating: { rate },
+    slug,
   },
 }) => {
   const { carts, addCart } = useCartStore();
@@ -39,7 +40,7 @@ const ProductCart = ({
   };
 
   const handleOpenDetail = () => {
-    navigate(`product-detail/${id}`);
+    navigate(`product-detail/${slug}`);
   };
 
   return (

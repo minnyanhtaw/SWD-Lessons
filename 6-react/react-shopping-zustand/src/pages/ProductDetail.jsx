@@ -13,9 +13,9 @@ import toast from "react-hot-toast";
 const ProductDetail = () => {
   const { carts, addCart } = useCartStore();
   const { products } = useProductStore();
-  const { productId } = useParams();
+  const { productSlug } = useParams();
   const currentProduct = products.find((product) => {
-    return product.id === parseInt(productId);
+    return product.slug === productSlug;
   });
 
   const handleAddedCartBtn = (event) => {
