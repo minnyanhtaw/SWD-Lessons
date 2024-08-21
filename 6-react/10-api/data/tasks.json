@@ -1,0 +1,60 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Set up project folder structure",
+      "description": "Organize the project using React's folder structure with Vite.",
+      "status": "completed",
+      "priority": "high",
+      "dueDate": "2024-08-21"
+    },
+    {
+      "id": 2,
+      "title": "Split components",
+      "description": "Refactor large components into smaller, reusable components.",
+      "status": "in-progress",
+      "priority": "medium",
+      "dueDate": "2024-08-23"
+    },
+    {
+      "id": 3,
+      "title": "Implement routing",
+      "description": "Use React Router to set up routing for the project.",
+      "status": "not started",
+      "priority": "high",
+      "dueDate": "2024-08-25"
+    },
+    {
+      "id": 4,
+      "title": "Integrate Preline UI",
+      "description": "Integrate Preline UI components into the project.",
+      "status": "not started",
+      "priority": "low",
+      "dueDate": "2024-08-28"
+    },
+    {
+      "id": 5,
+      "title": "Add related blog section",
+      "description": "Add a related blog section that skips the first cart if it's being viewed.",
+      "status": "in-progress",
+      "priority": "medium",
+      "dueDate": "2024-08-30"
+    },
+    {
+      "id": 6,
+      "title": "Learn Zustand",
+      "description": "Study how to use Zustand for state management.",
+      "status": "not started",
+      "priority": "low",
+      "dueDate": "2024-09-05"
+    },
+    {
+      "id": 7,
+      "title": "Manage product data",
+      "description": "Handle arrays of objects for product data in the e-commerce project.",
+      "status": "in-progress",
+      "priority": "high",
+      "dueDate": "2024-08-31"
+    }
+  ]
+}
