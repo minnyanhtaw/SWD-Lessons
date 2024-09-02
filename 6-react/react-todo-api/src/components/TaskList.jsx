@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import Task from "./Task";
 import { TaskContext } from "../context/TaskProvider";
+import SkeletonLoader from "./SkeletonLoader";
 
 const TaskList = () => {
   const { tasks, taskLoading } = useContext(TaskContext);
@@ -14,7 +15,7 @@ const TaskList = () => {
           <Task job={el} key={el.id} />
         ))}
       </div>
-      {taskLoading && <p>Loading...</p>}
+      {taskLoading && <SkeletonLoader />}
     </div>
   );
 };

@@ -1,29 +1,9 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "task": "Read Js Book",
-      "isDone": false
-    },
-    {
-      "id": 2,
-      "task": "Fix the bug in code review",
-      "isDone": false
-    },
-    {
-      "id": 3,
-      "task": "Wake up early",
-      "isDone": false
-    },
-    {
-      "task": "",
+      "task": "Min Nyan Htaw",
       "isDone": false,
-      "id": 4
-    },
-    {
-      "task": "Ma Ma Moe",
-      "isDone": false,
-      "id": 5
+      "id": 1
     }
   ]
 }

@@ -20,7 +20,12 @@ const TaskProvider = ({ children }) => {
     setSending(false);
   };
 
-  const deleteTask = (id) => {
+  const deleteTask = async (id) => {
+    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+      method: "DELETE",
+    });
+
+    const data = await res.json();
     setTask(tasks.filter((task) => task.id !== id));
   };
 
@@ -36,12 +41,18 @@ const TaskProvider = ({ children }) => {
     fetchTask();
   }, []);
 
-  const doneTask = (id) => {
-    setTask(
-      tasks.map((task) =>
-        task.id === id ? { ...task, isDone: !task.isDone } : task
-      )
-    );
+  const doneTask = async (id, currentState) => {
+    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({ isDone: !currentState }),
+    });
+
+    const data = await res.json();
+    console.log(data);
+    setTask(tasks.map((task) => (task.id === id ? data : task)));
   };
 
   return (

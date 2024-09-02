@@ -8,7 +8,7 @@ const Task = ({ job: { id, task, isDone } }) => {
   };
 
   const handleOnChange = () => {
-    doneTask(id);
+    doneTask(id, isDone);
   };
 
   return (
