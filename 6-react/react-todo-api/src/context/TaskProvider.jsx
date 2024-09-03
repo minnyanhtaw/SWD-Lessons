@@ -16,7 +16,8 @@ const TaskProvider = ({ children }) => {
     });
 
     const data = await res.json();
-    setTask([...tasks, data]);
+    // setTask([...tasks, data]);
+    fetchTask();
     setSending(false);
   };
 
@@ -51,8 +52,7 @@ const TaskProvider = ({ children }) => {
     });
 
     const data = await res.json();
-    console.log(data);
-    setTask(tasks.map((task) => (task.id === id ? data : task)));
+    fetchTask();
   };
 
   return (
