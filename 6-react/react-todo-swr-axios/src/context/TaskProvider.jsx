@@ -5,8 +5,9 @@ export const TaskContext = createContext();
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const TaskProvider = ({ children }) => {
-  console.log(import.meta.env.VITE_BASE_URL);
-  // const [tasks, setTask] = useState([]);
+  // console.log(import.meta.env.VITE_BASE_URL);
+
+  
   const {
     data = [],
     error,
