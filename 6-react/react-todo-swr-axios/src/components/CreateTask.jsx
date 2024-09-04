@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { TaskContext } from "../context/TaskProvider";
 
 const CreateTask = () => {
-  const {addTask} = useContext(TaskContext)
+  const { addTask } = useContext(TaskContext);
   const [job, setJob] = useState("");
 
   const handleOnChange = (event) => {
@@ -11,7 +11,6 @@ const CreateTask = () => {
 
   const handleAddBtn = () => {
     const newTask = {
-      id: Date.now(),
       task: job,
       isDone: false,
     };

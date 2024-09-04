@@ -4,11 +4,11 @@ import { TaskContext } from "../context/TaskProvider";
 const Task = ({ job: { id, task, isDone } }) => {
   const { deleteTask, doneTask } = useContext(TaskContext);
   const handleDelBtn = () => {
-    deleteTask(id);
+    confirm("Are you sure?") && deleteTask(id);
   };
 
   const handleOnChange = () => {
-    doneTask(id);
+    doneTask(id, isDone);
   };
 
   return (

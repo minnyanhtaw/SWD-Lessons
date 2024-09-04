@@ -1,13 +1,8 @@
 {
   "tasks": [
     {
-      "task": "Min Nyan Htaw",
-      "isDone": true,
-      "id": 1
-    },
-    {
       "task": "Nyan Htaw",
-      "isDone": true,
+      "isDone": false,
       "id": 2
     }
   ]

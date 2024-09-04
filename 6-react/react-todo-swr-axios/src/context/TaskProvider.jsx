@@ -1,51 +1,61 @@
 import React, { createContext, useState } from "react";
+import useSWR, { useSWRConfig } from "swr";
 export const TaskContext = createContext();
+
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const TaskProvider = ({ children }) => {
-  const [tasks, setTask] = useState([
-    {
-      id: 1,
-      task: "Read Js Book",
-      isDone: true,
-    },
-    {
-      id: 2,
-      task: "Fix the bug in code review",
-      isDone: false,
-    },
-    {
-      id: 3,
-      task: "Wake up early",
-      isDone: true,
-    },
-    {
-      id: 4,
-      task: "Learn React",
-      isDone: false,
-    },
-    {
-      id: 5,
-      task: "Take a nap",
-      isDone: false,
-    },
-  ]);
+  // const [tasks, setTask] = useState([]);
+  const {
+    data = [],
+    error,
+    isLoading,
+  } = useSWR("http://localhost:5000/tasks", fetcher);
+  // console.log(data);
 
-  const addTask = (newTask) => {
-    setTask([...tasks, newTask]);
+  const { mutate } = useSWRConfig();
+
+  const addTask = async (newTask) => {
+    const res = await fetch("http://localhost:5000/tasks", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newTask),
+    });
+
+    mutate("http://localhost:5000/tasks");
+    // setTask([...tasks, newTask]);
   };
-  const deleteTask = (id) => {
-    setTask(tasks.filter((task) => task.id !== id));
+  const deleteTask = async (id) => {
+    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+      method: "DELETE",
+    });
+
+    mutate("http://localhost:5000/tasks");
+    // setTask(tasks.filter((task) => task.id !== id));
   };
 
-  const doneTask = (id) => {
-    setTask(
-      tasks.map((task) =>
-        task.id === id ? { ...task, isDone: !task.isDone } : task
-      )
-    );
+  const doneTask = async (id, currentState) => {
+    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ isDone: !currentState }),
+    });
+
+    mutate("http://localhost:5000/tasks");
+    // setTask(
+    //   tasks.map((task) =>
+    //     task.id === id ? { ...task, isDone: !task.isDone } : task
+    //   )
+    // );
   };
 
   return (
-    <TaskContext.Provider value={{ tasks, setTask, deleteTask, doneTask }}>
+    <TaskContext.Provider
+      value={{ tasks: data, isLoading, addTask, deleteTask, doneTask }}
+    >
       {children}
     </TaskContext.Provider>
   );
