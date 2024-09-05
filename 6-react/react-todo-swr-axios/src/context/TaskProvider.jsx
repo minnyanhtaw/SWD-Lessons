@@ -5,17 +5,17 @@ export const TaskContext = createContext();
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const TaskProvider = ({ children }) => {
-  // console.log(import.meta.env.VITE_BASE_URL);
+  console.log(import.meta.env.VITE_BASE_URL);
+  // const url = import.meta.env.VITE_BASE_URL;
 
-  
   const {
     data = [],
     error,
     isLoading,
-  } = useSWR("http://localhost:5000/tasks", fetcher);
+  } = useSWR(`${import.meta.env.VITE_BASE_URL}/tasks`, fetcher);
 
   const api = axios.create({
-    baseURL: `http://localhost:5000/tasks`,
+    baseURL: `${import.meta.env.VITE_BASE_URL}/tasks`,
     headers: {
       "Content-Type": "application/json",
     },
@@ -35,7 +35,7 @@ const TaskProvider = ({ children }) => {
     //   body: JSON.stringify(newTask),
     // });
 
-    mutate("http://localhost:5000/tasks");
+    mutate(`${import.meta.env.VITE_BASE_URL}/tasks`);
     // setTask([...tasks, newTask]);
   };
   const deleteTask = async (id) => {
@@ -44,7 +44,7 @@ const TaskProvider = ({ children }) => {
     //   method: "DELETE",
     // });
 
-    mutate("http://localhost:5000/tasks");
+    mutate(`${import.meta.env.VITE_BASE_URL}/tasks`);
     // setTask(tasks.filter((task) => task.id !== id));
   };
 
@@ -60,7 +60,7 @@ const TaskProvider = ({ children }) => {
     //   body: JSON.stringify({ isDone: !currentState }),
     // });
 
-    mutate("http://localhost:5000/tasks");
+    mutate();
     // setTask(
     //   tasks.map((task) =>
     //     task.id === id ? { ...task, isDone: !task.isDone } : task
