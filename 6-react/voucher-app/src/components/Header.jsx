@@ -3,11 +3,10 @@ import Container from "./Container";
 
 const Header = () => {
   return (
-    <header>
+    <header className="mb-5">
       <Container>
         <h1 className="text-3xl font-bold">MMS Solution</h1>
-        <p>Voucher</p>
-        <p>San Kyi tar</p>
+        <p>Voucher App</p>
       </Container>
     </header>
   );
