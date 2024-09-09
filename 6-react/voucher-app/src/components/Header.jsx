@@ -6,7 +6,8 @@ const Header = () => {
     <header>
       <Container>
         <h1 className="text-3xl font-bold">MMS Solution</h1>
-        <p>Voucher App</p>
+        <p>Voucher</p>
+        <p>San Kyi tar</p>
       </Container>
     </header>
   );
