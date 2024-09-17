@@ -1,6 +1,12 @@
 {
   "products": [
     {
+      "id": 1,
+      "product_name": "Performance Optimization Service",
+      "price": 100,
+      "created_at": "2024-09-14T12:30:45Z"
+    },
+    {
       "id": 2,
       "product_name": "Custom Website Design",
       "price": 1200,
