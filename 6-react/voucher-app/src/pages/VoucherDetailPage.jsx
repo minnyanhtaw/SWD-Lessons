@@ -1,9 +1,20 @@
-import React from 'react'
+import React from "react";
+import VoucherDetailCard from "../components/VoucherDetailCard";
+import Breadcrumb from "../components/Breadcrumb";
+import Container from "../components/Container";
 
 const VoucherDetailPage = () => {
   return (
-    <div>VoucherDetailPage</div>
-  )
-}
+    <section>
+      <Container>
+        <Breadcrumb
+          currentPageTitle="Voucher Detail"
+          links={[{ title: "Voucher", path: "/voucher" }]}
+        />
+        <VoucherDetailCard />
+      </Container>
+    </section>
+  );
+};
 
-export default VoucherDetailPage
+export default VoucherDetailPage;

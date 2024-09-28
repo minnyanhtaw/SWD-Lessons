@@ -25,6 +25,7 @@ const ProductEditCard = () => {
     import.meta.env.VITE_API_URL + `/products/${id}`,
     fetcher
   );
+  console.log(data);
 
   const [isSending, setIsSending] = useState(false);
 

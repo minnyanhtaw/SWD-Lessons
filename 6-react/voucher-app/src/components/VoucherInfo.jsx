@@ -1,17 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import SaleForm from "./SaleForm";
 import VoucherTable from "./VoucherTable";
+import useRecordStore from "../stores/useRecordStore";
+import toast from "react-hot-toast";
+import { tailspin } from "ldrs";
+import { useNavigate } from "react-router-dom";
+tailspin.register();
 
 const VoucherInfo = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const [isSending, setIsSending] = useState(false);
+
+  const { records, resetRecords } = useRecordStore();
+  const navigate = useNavigate();
+
+  const onSubmit = async (data) => {
+    setIsSending(true);
+
+    const total = records.reduce((acc, record) => acc + record.cost, 0);
+    const tax = total * 0.05;
+    const netTotal = total + tax;
+
+    const currentVoucher = { ...data, records, total, tax, netTotal };
+    await fetch(import.meta.env.VITE_API_URL + "/vouchers", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(currentVoucher),
+    });
+    toast.success("Voucher created successfully", {
+      position: "bottom-right",
+    });
+
+    reset();
+    resetRecords();
+
+    setIsSending(false);
+
+    navigate("/voucher");
   };
 
   function generateInvoiceNumber() {
@@ -149,9 +183,18 @@ const VoucherInfo = () => {
         <button
           type="submit"
           form="infoForm"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
+          className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg"
         >
-          Confirm Voucher
+          {isSending ? (
+            <l-tailspin
+              size="20"
+              stroke="5"
+              speed="0.9"
+              color="white"
+            ></l-tailspin>
+          ) : (
+            "Confirm Voucher"
+          )}
         </button>
       </div>
     </div>

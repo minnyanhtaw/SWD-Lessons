@@ -1,10 +1,30 @@
 import React from "react";
+import useRecordStore from "../stores/useRecordStore";
+import toast from "react-hot-toast";
 
 const VoucherRow = ({
   record: { id, cost, price, product_name, quantity },
   index,
 }) => {
-  // console.log(record);
+
+  const { deleteRecord, changeQuantity, records } = useRecordStore();
+  const handleDelete = () => {
+    deleteRecord(id);
+    toast.success("You delete successfully", {
+      position: "bottom-right",
+    });
+  };
+
+  const handleIncreaseQuantity = () => {
+    changeQuantity(id, 1);
+  };
+
+  const handleDecreaseQuantity = () => {
+    changeQuantity(id, -1);
+  };
+
+  // console.log(records);
+
   return (
     <tr className="group odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
       <td className="px-6 py-4 td-counter">{index + 1}</td>
@@ -16,7 +36,10 @@ const VoucherRow = ({
       </th>
       <td className="px-6 py-4 text-end record-price">{price}</td>
       <td className="px-6 py-4 text-end">
-        <button className="q-sub pointer-events-none group-hover:pointer-events-auto opacity-0 group-hover:opacity-100 -translate-x-6 group-hover:translate-x-0 duration-200 bg-blue-100 text-blue-600 p-1 rounded">
+        <button
+          onClick={handleDecreaseQuantity}
+          className="q-sub pointer-events-none group-hover:pointer-events-auto opacity-0 group-hover:opacity-100 -translate-x-6 group-hover:translate-x-0 duration-200 bg-blue-100 text-blue-600 p-1 rounded"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -35,7 +58,10 @@ const VoucherRow = ({
         <span className="record-q w-5 inline-block text-center">
           {quantity}
         </span>
-        <button className="q-add pointer-events-none group-hover:pointer-events-auto opacity-0 group-hover:opacity-100 translate-x-6 group-hover:translate-x-0 duration-200 bg-blue-100 text-blue-600 p-1 rounded">
+        <button
+          onClick={handleIncreaseQuantity}
+          className="q-add pointer-events-none group-hover:pointer-events-auto opacity-0 group-hover:opacity-100 translate-x-6 group-hover:translate-x-0 duration-200 bg-blue-100 text-blue-600 p-1 rounded"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -56,7 +82,10 @@ const VoucherRow = ({
         <span className="record-cost">{cost}</span>
       </td>
       <td>
-        <button className=" translate-x-6 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 duration-200 pointer-events-none active:scale-75 bg-red-100 p-2 rounded-lg">
+        <button
+          onClick={handleDelete}
+          className=" translate-x-6 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 duration-200 active:scale-75 bg-red-100 p-2 rounded-lg"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

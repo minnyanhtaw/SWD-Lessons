@@ -5,8 +5,19 @@ import {
   HiOutlinePencil,
   HiOutlineTrash,
 } from "react-icons/hi2";
+import useSWR from "swr";
+import VoucherListRow from "./VoucherListRow";
+
+const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const VoucherList = () => {
+  const { data, isLoading, error } = useSWR(
+    import.meta.env.VITE_API_URL + "/vouchers",
+    fetcher
+  );
+
+  console.log(data);
+
   return (
     <div>
       <div className=" flex justify-between">
@@ -56,39 +67,10 @@ const VoucherList = () => {
                 There is no voucher
               </td>
             </tr>
-            <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-              <th className=" px-6 py-4">1</th>
-              <th
-                scope="row"
-                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-              >
-                Kyaw Kyaw
-              </th>
-              <td className="px-6 py-4 text-end">someone@gamil.com</td>
-              <td className="px-6 py-4 text-end">
-                <p className=" text-sm">7 Sep 2024</p>
-                <p className=" text-sm">10:00 PM</p>
-              </td>
-              <td className="px-6 py-4">
-                <div
-                  className="flex justify-end items-center rounded"
-                  role="group"
-                >
-                  <button
-                    type="button"
-                    className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white"
-                  >
-                    <HiOutlinePencil />
-                  </button>
-                  <button
-                    type="button"
-                    className="px-4 py-2 text-sm font-medium text-red-500 bg-white border border-gray-200 rounded-e hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white"
-                  >
-                    <HiOutlineTrash />
-                  </button>
-                </div>
-              </td>
-            </tr>
+            {!isLoading &&
+              data.map((voucher) => (
+                <VoucherListRow key={voucher.id} voucher={voucher} />
+              ))}
           </tbody>
         </table>
       </div>

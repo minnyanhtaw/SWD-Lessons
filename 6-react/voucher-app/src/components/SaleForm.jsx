@@ -11,7 +11,7 @@ const SaleForm = () => {
     fetcher
   );
 
-  const { addRecord } = useRecordStore();
+  const { addRecord, records, changeQuantity } = useRecordStore();
 
   const {
     register,
@@ -23,15 +23,25 @@ const SaleForm = () => {
   const onSubmit = (data) => {
     console.log(data);
     const currentProduct = JSON.parse(data.product);
-    addRecord({
-      id: Date.now(),
-      product_name: currentProduct.product_name,
-      price: currentProduct.price,
-      created_at: new Date().toISOString(),
-      quantity: data.quantity,
-      cost: currentProduct.price * data.quantity,
-    });
+    const currentProductId = currentProduct.id;
 
+    const isExited = records.find(
+      ({ product: { id } }) => id === currentProductId
+    );
+
+    if (isExited) {
+      changeQuantity(isExited.id, data.quantity);
+    } else {
+      addRecord({
+        id: Date.now(),
+        product: currentProduct,
+        product_name: currentProduct.product_name,
+        price: currentProduct.price,
+        created_at: new Date().toISOString(),
+        quantity: data.quantity,
+        cost: currentProduct.price * data.quantity,
+      });
+    }
     reset();
 
     // console.log(currentProduct);
@@ -87,6 +97,7 @@ const SaleForm = () => {
             </button>
           </div>
         </div>
+        
       </form>
     </div>
   );
