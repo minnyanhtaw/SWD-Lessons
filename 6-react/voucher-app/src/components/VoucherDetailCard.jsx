@@ -2,6 +2,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import useSWR from "swr";
 import VoucherDetailCardSkeleton from "./VoucherDetailCardSkeleton";
+import printJS from "print-js";
+import { html2pdf } from "html2pdf.js";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 const VoucherDetailCard = () => {
@@ -13,7 +15,27 @@ const VoucherDetailCard = () => {
   );
 
   const handlePrint = () => {
-    window.print();
+    // window.print();
+    printJS({
+      printable: "printArea",
+      type: "html",
+      scanStyles: true,
+      css: "https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css",
+    });
+  };
+
+  const handlePdf = () => {
+    const element = document.getElementById("printArea");
+
+    const opt = {
+      margin: 0.1,
+      filename: "voucher.pdf",
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: "in", format: "a5", orientation: "portrait" },
+    };
+
+    html2pdf().from(element).set(opt).save();
   };
 
   return (
@@ -21,7 +43,10 @@ const VoucherDetailCard = () => {
       {isLoading ? (
         <VoucherDetailCardSkeleton />
       ) : (
-        <div className="max-w-5xl mx-auto p-6 bg-gray-50 shadow-lg rounded-lg my-10 print:my-5">
+        <div
+          id="printArea"
+          className="w-[14.8cm] p-6 bg-gray-50 shadow-lg rounded-lg my-10 print:my-5"
+        >
           <div className="border-b pb-4 mb-6 flex justify-between items-center">
             <h1 className="text-3xl font-bold text-indigo-600">
               Voucher # {data.voucher_id}
@@ -46,7 +71,7 @@ const VoucherDetailCard = () => {
           </div>
 
           {/* Product Records */}
-          <div className="bg-white p-6 mb-6 rounded-lg shadow-sm border border-gray-200">
+          <div className="bg-white p-4 mb-6 rounded-lg shadow-sm border border-gray-200">
             <h2 className="text-xl font-semibold text-gray-700 mb-4">
               Products Purchased
             </h2>
@@ -54,7 +79,7 @@ const VoucherDetailCard = () => {
               {data.records.map((record) => (
                 <div
                   key={record.id}
-                  className="flex justify-between items-center bg-gray-100 p-4 rounded-lg"
+                  className="flex justify-between items-center bg-gray-100 p-3 rounded-lg"
                 >
                   <div>
                     <h3 className="text-lg font-medium text-gray-800">
@@ -62,14 +87,14 @@ const VoucherDetailCard = () => {
                     </h3>
                     <p className="text-gray-500">Quantity: {record.quantity}</p>
                   </div>
-                  <div className="text-right">
-                    <div className="text-gray-700 flex items-center gap-3">
+                  <div className="">
+                    <div className="text-gray-700 flex ">
                       <p className=" font-bold">Price : </p>
-                      <p>$ {record.price.toFixed(2)}</p>
+                      <p>$ {record.price.toFixed(1)}</p>
                     </div>
-                    <div className="text-gray-700 flex items-center gap-3">
+                    <div className="text-gray-700 flex items-center">
                       <p className=" font-bold">Cost : </p>
-                      <p>$ {record.cost.toFixed(2)}</p>
+                      <p>$ {record.cost.toFixed(1)}</p>
                     </div>
                   </div>
                 </div>
@@ -96,12 +121,20 @@ const VoucherDetailCard = () => {
           </div>
         </div>
       )}
-      <button
-        onClick={handlePrint}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded print:hidden"
-      >
-        Print
-      </button>
+      <div className=" flex items-center gap-3">
+        <button
+          onClick={handlePrint}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded print:hidden"
+        >
+          Print
+        </button>
+        <button
+          onClick={handlePdf}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Download PDF
+        </button>
+      </div>
     </>
   );
 };

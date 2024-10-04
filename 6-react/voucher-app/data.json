@@ -211,6 +211,174 @@
       "tax": 30,
       "netTotal": 630,
       "id": 5
+    },
+    {
+      "voucher_id": "INV-20241004-5271",
+      "customer_name": "Ma Ma",
+      "customer_email": "mama@gmail.com",
+      "sale_date": "2024-10-04",
+      "redirect_to_detail": "true",
+      "all_correct": "true",
+      "records": [
+        {
+          "id": 1728054135881,
+          "product": {
+            "id": 2,
+            "product_name": "Custom Website Design",
+            "price": 1200,
+            "created_at": "2024-09-13T09:00:00Z"
+          },
+          "product_name": "Custom Website Design",
+          "price": 1200,
+          "created_at": "2024-10-04T15:02:15.882Z",
+          "quantity": "3",
+          "cost": 3600
+        }
+      ],
+      "total": 3600,
+      "tax": 180,
+      "netTotal": 3780,
+      "id": 6
+    },
+    {
+      "voucher_id": "INV-20241004-2171",
+      "customer_name": "Mor Tho",
+      "customer_email": "mortho@gmail.com",
+      "sale_date": "2024-10-04",
+      "redirect_to_detail": "true",
+      "all_correct": "true",
+      "records": [
+        {
+          "id": 1728054438600,
+          "product": {
+            "id": 3,
+            "product_name": "SEO Optimization Service",
+            "price": 300,
+            "created_at": "2024-09-12T14:15:30Z"
+          },
+          "product_name": "SEO Optimization Service",
+          "price": 300,
+          "created_at": "2024-10-04T15:07:18.600Z",
+          "quantity": "2",
+          "cost": 600
+        }
+      ],
+      "total": 600,
+      "tax": 30,
+      "netTotal": 630,
+      "id": 7
+    },
+    {
+      "voucher_id": "INV-20241004-3023",
+      "customer_name": "Aung Aung",
+      "customer_email": "mama@gmail.com",
+      "sale_date": "2024-10-04",
+      "redirect_to_detail": "true",
+      "all_correct": "true",
+      "records": [
+        {
+          "id": 1728054555039,
+          "product": {
+            "id": 5,
+            "product_name": "E-commerce Setup Service",
+            "price": 1500,
+            "created_at": "2024-09-10T16:20:15Z"
+          },
+          "product_name": "E-commerce Setup Service",
+          "price": 1500,
+          "created_at": "2024-10-04T15:09:15.039Z",
+          "quantity": "3",
+          "cost": 4500
+        }
+      ],
+      "total": 4500,
+      "tax": 225,
+      "netTotal": 4725,
+      "id": 8
+    },
+    {
+      "voucher_id": "INV-20241004-7143",
+      "customer_name": "Mor",
+      "customer_email": "mor@gmail.com",
+      "sale_date": "2024-10-04",
+      "redirect_to_detail": "true",
+      "all_correct": "true",
+      "records": [
+        {
+          "id": 1728054611080,
+          "product": {
+            "id": 3,
+            "product_name": "SEO Optimization Service",
+            "price": 300,
+            "created_at": "2024-09-12T14:15:30Z"
+          },
+          "product_name": "SEO Optimization Service",
+          "price": 300,
+          "created_at": "2024-10-04T15:10:11.080Z",
+          "quantity": "2",
+          "cost": 600
+        }
+      ],
+      "total": 600,
+      "tax": 30,
+      "netTotal": 630,
+      "id": 9
+    },
+    {
+      "voucher_id": "INV-20241004-2478",
+      "customer_name": "Ma Ma",
+      "customer_email": "mamoe@gmail.com",
+      "sale_date": "2024-10-04",
+      "redirect_to_detail": "true",
+      "all_correct": "true",
+      "records": [
+        {
+          "id": 1728054754486,
+          "product": {
+            "id": 4,
+            "product_name": "Responsive Website Development",
+            "price": 800,
+            "created_at": "2024-09-11T10:45:00Z"
+          },
+          "product_name": "Responsive Website Development",
+          "price": 800,
+          "created_at": "2024-10-04T15:12:34.486Z",
+          "quantity": "555",
+          "cost": 444000
+        }
+      ],
+      "total": 444000,
+      "tax": 22200,
+      "netTotal": 466200,
+      "id": 10
+    },
+    {
+      "voucher_id": "INV-20241004-8773",
+      "customer_name": "Aie Poine Sorn",
+      "customer_email": "aung@gmail.com",
+      "sale_date": "2024-10-04",
+      "redirect_to_detail": "true",
+      "all_correct": "true",
+      "records": [
+        {
+          "id": 1728054809711,
+          "product": {
+            "id": 1,
+            "product_name": "Performance Optimization Service",
+            "price": 100,
+            "created_at": "2024-09-14T12:30:45Z"
+          },
+          "product_name": "Performance Optimization Service",
+          "price": 100,
+          "created_at": "2024-10-04T15:13:29.711Z",
+          "quantity": "2",
+          "cost": 200
+        }
+      ],
+      "total": 200,
+      "tax": 10,
+      "netTotal": 210,
+      "id": 11
     }
   ]
 }
