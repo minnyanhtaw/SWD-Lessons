@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
 import {
   HiOutlinePencil,
@@ -14,10 +14,24 @@ import { Link } from "react-router-dom";
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const ProductList = () => {
+  const [search, setSearch] = useState("");
   const { data, isLoading, error } = useSWR(
-    import.meta.env.VITE_API_URL + "/products",
+    search
+      ? `${import.meta.env.VITE_API_URL}/products?product_name_like=${search}`
+      : import.meta.env.VITE_API_URL + "/products",
     fetcher
   );
+  const searchInput = useRef();
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const handleClearSearch = () => {
+    searchInput.current.value = "";
+    setSearch("");
+  };
+
   // console.log(import.meta.env.VITE_API_URL);
   return (
     <div>
@@ -29,9 +43,32 @@ const ProductList = () => {
             </div>
             <input
               type="text"
+              ref={searchInput}
+              onChange={handleSearch}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Search Product"
             />
+            {search && (
+              <button
+                onClick={handleClearSearch}
+                className="absolute top-0 bottom-0 right-2 m-auto bg-red-200 h-4 flex justify-center items-center w-4 rounded-full"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-3 stroke-red-600"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18 18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            )}
           </div>
         </div>
         <div>

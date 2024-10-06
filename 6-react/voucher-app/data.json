@@ -379,6 +379,48 @@
       "tax": 10,
       "netTotal": 210,
       "id": 11
+    },
+    {
+      "voucher_id": "INV-20241006-8810",
+      "customer_name": "Aie Poine Sorn",
+      "customer_email": "mama@gmail.com",
+      "sale_date": "2024-10-06",
+      "redirect_to_detail": "true",
+      "all_correct": "true",
+      "records": [
+        {
+          "id": 1728225303505,
+          "product": {
+            "id": 4,
+            "product_name": "Responsive Website Development",
+            "price": 800,
+            "created_at": "2024-09-11T10:45:00Z"
+          },
+          "product_name": "Responsive Website Development",
+          "price": 800,
+          "created_at": "2024-10-06T14:35:03.505Z",
+          "quantity": "2",
+          "cost": 1600
+        },
+        {
+          "id": 1728225311400,
+          "product": {
+            "id": 9,
+            "product_name": "Custom Web Application Development",
+            "price": 2000,
+            "created_at": "2024-09-06T09:45:00Z"
+          },
+          "product_name": "Custom Web Application Development",
+          "price": 2000,
+          "created_at": "2024-10-06T14:35:11.400Z",
+          "quantity": "3",
+          "cost": 6000
+        }
+      ],
+      "total": 7600,
+      "tax": 380,
+      "netTotal": 7980,
+      "id": 12
     }
   ]
 }
